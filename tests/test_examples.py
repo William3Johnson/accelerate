@@ -142,7 +142,7 @@ class FeatureExamplesTests(TempDirTestCase):
     def run_script(self, command, return_output=True, **kwargs):
         "Runs `command` and returns the `stdout`. Will call `fail` if errors occured."
         try:
-            proc = subprocess.run(command, stderr=subprocess.PIPE, check=True, **kwargs)
+            proc = subprocess.run(command, stderr=subprocess.PIPE, stdout=subprocess.PIPE, check=True, **kwargs)
             if return_output:
                 return proc.stdout
         except subprocess.CalledProcessError as e:
