@@ -146,7 +146,7 @@ class FeatureExamplesTests(TempDirTestCase):
             if return_output:
                 return proc.stdout
         except subprocess.CalledProcessError as e:
-            self.fail(f"Command {command} failed with:\n", f"{e.stderr}")
+            self.fail(f"Command {command} failed with:\n{e.stderr}")
 
     def test_checkpointing_by_epoch(self):
         testargs = f"""
