@@ -146,7 +146,7 @@ class FeatureExamplesTests(TempDirTestCase):
             if return_output:
                 return proc.stdout
         except subprocess.CalledProcessError as e:
-            err = e.stderr.split("Traceback (most recent call last):")[1]
+            err = e.stderr.decode("utf-8").split("Traceback (most recent call last):")[1]
             self.fail(f"Command {command} failed with the following traceback (most recent call last):\n{err}")
 
     def test_checkpointing_by_epoch(self):
