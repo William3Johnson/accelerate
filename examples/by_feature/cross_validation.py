@@ -242,6 +242,7 @@ def training_function(config, args):
         accelerator.free_memory()
     # New Code #
     # Finally we check the accuracy of our folded results:
+    print(f'Test Preds Shape: {test_predictions.shape}\nLabels shape: {test_labels.shape}')
     preds = torch.stack(test_predictions, dim=0).sum(dim=0).div(int(args.num_folds)).argmax(dim=-1)
     test_metric = metric.compute(predictions=preds, references=test_labels)
     accelerator.print("Average test metrics from all folds:", test_metric)
